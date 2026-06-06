@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Email template</title>
+
+    <style>
+
+    </style>
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        * {
+            font-family: "Poppins", sans-serif !important;
+        }
+    </style>
+
+</head>
+
+<body style="background-color: #F2F2F2; margin-top: 0px; margin-bottom: 0px; 
+font-family: 'Source Sans 3', sans-serif;height: 100%;">
+    <table width="100%" style="font-size: 16px; height: 100%; max-width: 720px;margin: 0 auto;">
+        <tbody style="background-color: rgba(16, 10, 10, 0.15);">
+            <tr style="background-color: #fff; margin:0 auto; max-width: 600px; display:flex; height: 100%;">
+                <td class="container" style="margin: 60px 0px;">
+                    <div class="content" style="display: block;  padding: 0px 40px 0px 40px;">
+                        <div class="content" style="margin-bottom: 40px;">
+                            <table width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td class="aligncenter content-block;"
+                                            style="text-align: center; font-size: 12px; background-color:#fff; margin-bottom: 0px; display: flex; height: 100%; padding: 8px; border-radius: 6px;">
+                                            <a href="#"
+                                                style="color: #999; list-style: none; display: block; margin: auto; text-decoration: none;">
+                                                <img style="width: 100px; height: auto;" id="logo"
+                                                    src="https://demoserver3.sgp1.digitaloceanspaces.com/demoserver3/live/1773638305912.png"
+                                                    alt="" />
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                            </table>
+                        </div>
+                        <table class="main" ellpadding="0" cellspacing="0"
+                            style="margin-top:auto; background-clip: padding-box; border-radius: 20px;">
+                            <tbody>
+                                <tr>
+                                    <td class="content-wrap">
+                                        <table cellpadding="0" cellspacing="0" style="margin: auto;">
+                                            <tbody style="position:relative;">
+
+                                                <tr>
+                                                    <td class="aligncenter content-block"
+                                                        style="font-size: 16px; padding-bottom: 24px; color: rgba(18, 18, 18, 1);">
+                                                        Hi <span style=" font-weight: 600;">{{name}},</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="content-block"
+                                                        style="line-height: 24px;  font-weight: 400;color:rgba(18, 18, 18, 1); font-size: 16px; line-height: 22px;">
+                                                        To verify your email address, please enter this
+                                                        verification code:
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align: center; padding: 40px 0px;">
+
+                                                        <button
+                                                            style="border: 0px;padding: 12px 20px ;;
+                                                        color: rgba(18, 18, 18, 1); font-weight: 500 ;font-size: 24px;;
+                                                        background-color: rgba(246, 246, 246, 1); text-align: center; border-radius: 5px;">
+                                                            {{otp}}
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                {{!-- <tr>
+                                                    <td class="content-block"
+                                                        style="padding-bottom:10px;  font-weight: 400; color: rgba(18, 18, 18, 1); font-size: 16px; line-height: 22px;">
+                                                        Terms and Conditions
+                                                    </td>
+                                                </tr> --}}
+                                                <tr>
+                                                    <td class="content-block"
+                                                        style="font-weight: 400; color: rgba(18, 18, 18, 1); font-size: 16px; line-height: 22px; padding-bottom: 10px;">
+                                                        <a href="{{baseUrl}}/{{policy}}"
+                                                            style="font-weight: bold; text-decoration: underline; color: rgba(18, 18, 18, 1);">
+                                                            Privacy Policy
+                                                        </a>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="content-block"
+                                                        style="font-weight: 400; color: rgba(18, 18, 18, 1); font-size: 16px; line-height: 22px; padding-bottom: 10px;">
+                                                        <span style="font-weight: 600;">NOTE:</span> This shared
+                                                        verification code will expire after 5 minutes.
+                                                    </td>
+                                                </tr>
+                                                {{!-- <tr>
+                                                    <td class="content-block"
+                                                        style="font-weight: 400;padding-bottom:70px; color: rgba(18, 18, 18, 1); font-size: 16px; line-height: 22px;">
+                                                        C-126, 3rd Floor, Phase-8, Industrial Area, Sector 73, Sahibzada
+                                                        Ajit Singh Nagar, Punjab 160071
+                                                    </td>
+                                                </tr> --}}
+                                                <tr>
+                                                    <td
+                                                        style="font-weight: 400;color: rgba(18, 18, 18, 1); font-size: 16px; line-height: 22px;">
+
+                                                        <button
+                                                            style="border: 0px; width: 100%; padding: 12px 20px;
+                                                        color: rgba(130, 130, 130, 1); font-weight: 500 ;font-size:12px;
+                                                        background-color: rgba(246, 246, 246, 1); text-align: center; border-radius: 5px;">
+                                                            Copyright © 2024 ReadyDeliveries, All Rights Reserved.
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

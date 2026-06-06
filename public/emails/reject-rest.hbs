@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h1 {
+            color: #d9534f;
+            font-size: 28px;
+        }
+
+        h2 {
+            color: #5bc0de;
+            font-size: 22px;
+        }
+
+        p, li {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .content {
+            margin-top: 20px;
+        }
+
+        .footer {
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #888;
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            background-color: #d9534f;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        .button:hover {
+            background-color: #c9302c;
+        }
+
+        .reject-reason {
+            font-weight: bold;
+            color: #d9534f;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <a href="#">
+                <img src="https://demoserver3.sgp1.digitaloceanspaces.com/demoserver3/live/1773638305912.png" alt="ReadyDeliveries Logo" width="100" />
+            </a>
+        </div>
+        
+        <h1>Restaurant Request Rejected</h1>
+        
+        <div class="content">
+            <p>Dear {{restaurantOwnerName}},</p>
+
+            <p>We regret to inform you that your request to register your restaurant with ReadyDeliveries has been rejected. After reviewing your submission, we have determined that it does not meet the necessary criteria due to the following reason(s):</p>
+            
+            <p class="reject-reason">Reason for Rejection: {{reason}}</p>
+            
+            <h2>Account Status</h2>
+            <ul>
+                <li>Your restaurant will not be listed on the ReadyDeliveries platform at this time.</li>
+                <li>All restaurant management features in the ReadyDeliveries admin dashboard will remain disabled.</li>
+            </ul>
+
+            <h2>What You Can Do</h2>
+            <ul>
+                <li>If you believe there has been an error or you would like to rectify the issues mentioned, you may contact our support team for assistance.</li>
+                <li>We encourage you to make the necessary changes and reapply to become part of our platform.</li>
+            </ul>
+
+            <h2>Next Steps</h2>
+            <p>If you have any questions or need further clarification, please don't hesitate to reach out to us. We appreciate your interest in partnering with ReadyDeliveries and look forward to potentially working with you in the future.</p>
+            
+            <a href="mailto:support@hffood.com" class="button">Contact Support</a>
+
+            <p>Best regards,<br />The ReadyDeliveries Team</p>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 ReadyDeliveries , All Rights Reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

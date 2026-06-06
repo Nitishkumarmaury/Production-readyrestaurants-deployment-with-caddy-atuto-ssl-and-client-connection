@@ -1,0 +1,79 @@
+image: node:20
+pipelines:
+  branches:
+    master:
+      - step:
+          name: Build
+          caches:
+            - node
+          script:
+            - npm install --force
+            - npm run build
+          artifacts:
+            - dist/**
+      - step:
+          name: Prepare Build Directory
+          script:
+            - |
+              ssh $USER@$SERVER << 'EOF'
+                echo "Removing old build folder..."
+                sudo rm -rf /var/www/html/hf-restaurants/readyrestaurantsnestjs/dist
+                echo "Creating new build folder..."
+                sudo mkdir /var/www/html/hf-restaurants/readyrestaurantsnestjs/dist
+                echo "Setting folder permissions..."
+                sudo chmod 777 /var/www/html/hf-restaurants/readyrestaurantsnestjs/dist
+              EOF
+      - step:
+          name: Deploy artifacts using SCP to PROD
+          deployment: production
+          script:
+            - pipe: atlassian/rsync-deploy:0.3.2
+              variables:
+                USER: $USER
+                SERVER: $SERVER
+                REMOTE_PATH: "/var/www/html/hf-restaurants/readyrestaurantsnestjs/dist"
+                LOCAL_PATH: "dist/*"
+                EXTRA_ARGS: "--archive --compress --delete"
+            - echo "Pm2 restart"
+            - ssh $USER@$SERVER "pm2 restart readyrestaurantsnestjs"
+            - ssh $USER@$SERVER "pm2 restart readyrestaurantsnestjs-cron"
+
+
+
+    dev:
+      - step:
+          name: Build
+          caches:
+            - node
+          script:
+            - npm install --force
+            - npm run build
+          artifacts:
+            - dist/**
+      - step:
+          name: Prepare Build Directory
+          script:
+            - |
+              ssh $USERDEV@$SERVERDEV << 'EOF'
+                echo "Removing old build folder..."
+                sudo rm -rf /var/www/html/hf-restaurants/dev/readyrestaurantsnestjs/dist
+                echo "Creating new build folder..."
+                sudo mkdir /var/www/html/hf-restaurants/dev/readyrestaurantsnestjs/dist
+                echo "Setting folder permissions..."
+                sudo chmod 777 /var/www/html/hf-restaurants/dev/readyrestaurantsnestjs/dist
+              EOF
+      - step:
+          name: Deploy artifacts and restart PM2 on PROD
+          deployment: production
+          script:
+            - pipe: atlassian/rsync-deploy:0.3.2
+              variables:
+                USER: $USERDEV
+                SERVER: $SERVERDEV
+                REMOTE_PATH: "/var/www/html/hf-restaurants/dev/readyrestaurantsnestjs/dist"
+                LOCAL_PATH: "dist/*"
+                EXTRA_ARGS: "--archive --compress --delete"
+            - echo "Pm2 restart"
+            - ssh $USERDEV@$SERVERDEV "pm2 restart readyrestaurantsnestjs-dev"
+            - ssh $USERDEV@$SERVERDEV "pm2 restart readyrestaurantsnestjs-cron-dev"
+

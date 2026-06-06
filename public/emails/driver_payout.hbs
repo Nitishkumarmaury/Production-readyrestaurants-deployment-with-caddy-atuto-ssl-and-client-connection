@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            background-color: #e5cf45;
+            padding: 10px;
+            text-align: center;
+            color: white;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .content h2 {
+            color: #333333;
+        }
+
+        .details {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .details p {
+            margin: 5px 0;
+            line-height: 1.5;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #888888;
+            margin-top: 20px;
+        }
+
+        .footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo" style="text-align: center;">
+                <a href="#">
+                    <img style="width: 100px; height: auto;"
+                        src="https://demoserver3.sgp1.digitaloceanspaces.com/demoserver3/live/1773638305912.png" alt="logo">
+                </a>
+            </div>
+        </div>
+
+        <div class="content">
+            <h2>Hello {{driverName}},</h2>
+            <p>We hope you had a great week! Here is your payout summary for the week:</p>
+            <div class="details">
+                <p><strong>Week:</strong> {{weekStart}} to {{weekEnd}}</p>
+                <p><strong>Total Delivery Charge Amount:</strong> ${{totalDeliveryCharge}}</p>
+                <p><strong>Total Commission Amount:</strong> ${{totalCommission}}</p>
+                <hr>
+                <p><strong>Net Payout Amount:</strong> ${{netPayout}}</p>
+            </div>
+            <p>The net payout amount has been successfully transferred to your bank account. If you have any questions
+                or need further information, feel free to contact us.</p>
+            <p>To download your invoice, kindly click the link below:</p>
+
+            <a href="{{invoiceLink}}">Invoice </a>
+        </div>
+        <div class="footer">
+            <p>Best regards,<br>The ReadyDeliveries Team</p>
+            <td style="font-weight: 400;color: rgba(18, 18, 18, 1); font-size: 16px; line-height: 22px;">
+
+                <button
+                    style="border: 0px; width: 100%; padding: 12px 20px;
+                                                        color: rgba(130, 130, 130, 1); font-weight: 500 ;font-size:12px;
+                                                        background-color: rgba(246, 246, 246, 1); text-align: center; border-radius: 5px;">
+                    Copyright © 2024 ReadyDeliveries, All Rights Reserved.
+                </button>
+            </td>
+        </div>
+    </div>
+</body>
+
+</html>

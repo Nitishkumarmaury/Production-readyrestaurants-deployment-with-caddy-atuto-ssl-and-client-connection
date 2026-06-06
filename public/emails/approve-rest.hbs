@@ -1,0 +1,113 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Restaurant Has Been Approved – Welcome to ReadyDeliveries! 🍽️</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color:  #13c11f;
+            font-size: 24px;
+        }
+
+        .content {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #13c11f;
+            color: #ffffff;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 30px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: #13c11f;
+        }
+
+        .footer {
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #777;
+            text-align: center;
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <a href="#">
+                <img style="width: 100px;" id="logo"
+                    src="https://demoserver3.sgp1.digitaloceanspaces.com/demoserver3/live/1773638305912.png" width="100" alt="" />
+            </a>
+        </div>
+
+        <h1>Congratulations, {{adminName}}!</h1>
+
+        <div class="content">
+            <p>We’re thrilled to let you know that your restaurant, <strong>{{restaurantName}}</strong>, has been officially approved and is now live on <strong>ReadyDeliveries</strong>! Customers can now discover and place orders from your menu.</p>
+
+            <h2 style="color: #333;">What’s Next?</h2>
+            <ul>
+                <li>🚀 <strong>Access your Vendor Portal:</strong> Log in to manage your restaurant profile, update your menu, and track orders in real-time.</li>
+                <li>🍽️ <strong>Prepare your kitchen:</strong> Make sure you're stocked and ready to serve!</li>
+                <li>📈 <strong>Optimize your visibility:</strong> Explore our marketing and admin resources to boost your orders and ratings.</li>
+            </ul>
+
+            <p>💡 <strong>Need a quick start guide?</strong> <a href="{{baseUrl}}/" target="_blank">Click here</a> for tips and best practices.</p>
+
+            <p>If you have any questions or need help at any point, feel free to reach out. Our support team is available 7 days a week via chat or email.</p>
+
+            <p style="margin-top: 30px;">Welcome aboard, and here’s to your success on ReadyDeliveries! 🧑‍🍳</p>
+
+            <p>Warm regards,<br /><strong>The ReadyDeliveries Team</strong></p>
+
+            <a href="#" class="btn">Visit Vendor Portal</a>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 ReadyDeliveries. All Rights Reserved.</p>
+        </div>
+    </div>
+</body>
+
+</html>

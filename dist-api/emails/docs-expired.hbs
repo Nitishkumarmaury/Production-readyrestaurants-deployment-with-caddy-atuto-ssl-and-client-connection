@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Action Required: Your Account is Inactive Due to Expired Documents</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .content {
+      margin-top: 20px;
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 0.9em;
+      color: #777;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="logo-container" style="text-align: center;">
+      <a href="#">
+        <img style="width: 90px;" id="logo" src="https://carsnacks.nyc3.digitaloceanspaces.com/carsnacks/dev/logo.png"
+          width="90" alt="" />
+      </a>
+    </div>
+
+    <p>Dear {{driverName}},</p>
+
+    <div class="content">
+      <p>We regret to inform you that your ReadyDeliveries account has been blocked by the admin due to the following
+        reason:</p>
+
+      <p>• <strong>Document Expired</strong></p>
+
+      <p>Your account is currently unavailable on our platform because your documents have expired. We
+        kindly request you to upload updated documents as soon as possible to resolve this issue.
+      </p>
+
+      <p>If you have any questions or need further assistance, feel free to reach out to our support team.</p>
+
+      <p>Best regards,<br>
+        ReadyDeliveries Team</p>
+    </div>
+
+    <div class="footer">
+      <button style="border: 0px; width: 100%; padding: 12px 20px;
+                    color: rgba(130, 130, 130, 1); font-weight: 500; font-size:12px;
+                    background-color: rgba(246, 246, 246, 1); text-align: center; border-radius: 5px;">
+        Copyright © 2025 ReadyDeliveries, All Rights Reserved.
+      </button>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invoice</title>
+  <style>
+    /* General styling */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Container for the invoice */
+    .invoice-box {
+      width: 100%;
+      max-width: 800px;
+      padding: 20px;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      background: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      overflow-x: auto;
+      /* Allows scrolling if content overflows */
+      margin: auto;
+      /* Centers the invoice-box */
+    }
+
+    /* Invoice header */
+    .invoice-header {
+      text-align: center;
+      font-size: 26px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #333;
+      text-shadow: 1px 1px 1px #e6e6e6;
+    }
+
+    /* Invoice details */
+    .invoice-details {
+      margin: 20px 0;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .invoice-details p {
+      margin: 5px 0;
+    }
+
+    /* Addresses */
+    .address {
+      margin-top: 20px;
+      border-top: 1px solid #eee;
+      padding-top: 10px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    /* Table for cart items */
+    .cart-items {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    .cart-items th,
+    .cart-items td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .cart-items th {
+      background-color: #f2f2f2;
+    }
+
+    /* Summary */
+    .summary {
+      margin-top: 20px;
+      font-size: 15px;
+      text-align: right;
+    }
+
+    .summary p {
+      margin: 5px 0;
+      font-weight: bold;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="invoice-box">
+    <div class="invoice-header">Invoice</div>
+
+    <div class="invoice-details">
+      <p><strong>Order ID:</strong> {{orderId}}</p>
+      <p><strong>Date:</strong> {{date}}</p>
+      <p><strong>Customer Name:</strong> {{customerName}}</p>
+      {{#if (eq deliver_type 'driver')}}
+        <p><strong>Driver Name:</strong> {{driverName}}</p>
+      {{/if}}
+      <p><strong>Store Name:</strong> {{restaurantName}}</p>
+    </div>
+
+    <div class="address">
+      
+      {{#if (eq deliver_type 'driver')}}
+      <h3>Delivery Address</h3>
+      <p>{{deliveryAddress}}</p>
+      {{/if}}
+
+      
+      <h3>Store Address</h3>
+      <p>{{restaurantAddress}}</p>
+    </div>
+
+    <table class="cart-items">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Quantity</th>
+          <th>Price</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        {{#each cart_items}}
+        <tr>
+          <td>
+            {{this.name}}
+            <br>
+            <span style="font-size: 0.9em; color: #888;">
+              Add-Ons:
+              {{#if this.add_ons.length}}
+              (
+              {{#each this.add_ons}}
+              {{this.name}} +${{this.price}}{{#unless @last}}, {{/unless}}
+              {{/each}}
+              )
+              {{else}}
+              (No Add-Ons)
+              {{/if}}
+            </span>
+          </td>
+          <td>{{this.no_of_quantity}}</td>
+          <td>${{lookup ../cart_total_amount @index}}</td> <!-- Use lookup to access by index -->
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+
+
+    <div class="summary">
+      <p>Subtotal: ${{subtotal}}</p>
+      <p>GST: ${{tax}}</p>
+      <p>Platform Fee: ${{platform_fee}}</p>
+
+
+      {{#if couponDiscount}}
+        <p>Coupon Discount: ${{couponDiscount}}</p>
+      {{/if}}
+
+      {{#if (eq deliver_type 'driver')}}
+        <p>Delivery Charge: ${{deliveryCharge}}</p>
+        <p>Tip Amount: ${{tip_amount}}</p>
+      {{/if}}
+
+      <p>Total Amount: ${{totalAmount}}</p>
+    </div>
+    {{#if driverFinalEarning}}
+    <div class="summary">
+      <h3>Driver Earnings</h3>
+      <p>Tip Amount: ${{driverTipAmount}}</p>
+      <p>Driver Cut : ${{driverCut}}</pp>
+      <p><strong>Trip Amount: ${{driverTripAmount}}</strong></p>
+      <p><strong>Final Amount: ${{driverFinalEarning}}</strong></p>
+    </div>
+    {{/if}}
+
+    {{#if restaurantEarning}}
+    <div class="summary">
+      <h3>Store Earnings</h3>
+      <p>Subtotal: ${{subtotal}}</p>
+      <p>Store Cut: ${{restaurantCut}}</p>
+      <p><strong>Final Earning: ${{restaurantEarning}}</strong></p>
+    </div>
+    {{/if}}
+
+    {{#if adminRevenue}}
+    <div class="summary">
+      <h3>Admin Breakdown</h3>
+      <p>Platform Fee from Store: ${{platformFee}}</p>
+      <p>Driver Earning: ${{driverEarning}}</p>
+      <p>Store Earning: ${{restaurantEarning}}</p>
+      <p>Tax Collected: ${{taxAmount}}</p>
+      <p><strong>Total Revenue: ${{adminRevenue}}</strong></p>
+    </div>
+    {{/if}}
+
+  </div>
+</body>
+
+</html>

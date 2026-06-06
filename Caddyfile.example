@@ -1,0 +1,25 @@
+{
+  email admin@plantgen.live
+
+  on_demand_tls {
+    ask http://127.0.0.1:3000/ready-delivery/owner/domain/ask
+    interval 2m
+    burst 10
+  }
+}
+
+api.plantgen.live {
+  reverse_proxy 127.0.0.1:3000
+}
+
+# Client custom domains and tenant subdomains land here.
+:80, :443 {
+  tls {
+    on_demand
+  }
+
+  @api path /ready-delivery/* /subscription-plans* /auth/* /admin* /customer/* /restaurant/* /order/* /vendor/* /driver/* /payment/* /razorpay/* /wallet/* /address/* /category/* /food/* /coupon/* /review/* /favourite/* /configuration* /image-upload /csv-upload
+  reverse_proxy @api 127.0.0.1:3000
+
+  reverse_proxy 127.0.0.1:3001
+}

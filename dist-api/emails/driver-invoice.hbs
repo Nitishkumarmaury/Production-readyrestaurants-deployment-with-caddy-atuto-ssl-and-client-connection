@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invoice</title>
+  <style>
+    /* General styling */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Container for the invoice */
+    .invoice-box {
+      width: 100%;
+      max-width: 800px;
+      padding: 20px;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      background: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      overflow-x: auto;
+      /* Allows scrolling if content overflows */
+      margin: auto;
+      /* Centers the invoice-box */
+    }
+
+    /* Invoice header */
+    .invoice-header {
+      text-align: center;
+      font-size: 26px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #333;
+      text-shadow: 1px 1px 1px #e6e6e6;
+    }
+
+    /* Invoice details */
+    .invoice-details {
+      margin: 20px 0;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .invoice-details p {
+      margin: 5px 0;
+    }
+
+    /* Addresses */
+    .address {
+      margin-top: 20px;
+      border-top: 1px solid #eee;
+      padding-top: 10px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    /* Table for cart items */
+    .cart-items {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    .cart-items th,
+    .cart-items td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .cart-items th {
+      background-color: #f2f2f2;
+    }
+
+    /* Summary */
+    .summary {
+      margin-top: 20px;
+      font-size: 15px;
+      text-align: right;
+    }
+
+    .summary p {
+      margin: 5px 0;
+      font-weight: bold;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="invoice-box">
+    <div class="invoice-header">Driver Invoice</div>
+
+    <div class="invoice-details">
+      <p><strong>Driver ID: {{driver._id}}</strong> </p>
+      <p><strong>Name:</strong> {{driver.name}} </p>
+      <p><strong>Phone:</strong> {{driver.country_code}} {{driver.phone}}</p>
+      <p><strong>Email :</strong> {{driver.email}}</p>
+    </div>
+
+    <table class="cart-items">
+      <thead>
+        <tr>
+          <th>Order Id</th>
+          <th>Delivery Charge</th>
+          <th>Commission From Driver</th>
+          <th>Total Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each driverEarnings}}
+        <tr>
+          <td>{{order_id.order_id}}</td>
+          <td> {{formatPrice delivery_charge}} </td>
+          <td>{{formatPrice commission_from_driver}}</td> <!-- Use lookup to access by index -->
+          <td>{{formatPrice total_amount}}</td> <!-- Use lookup to access by index -->
+        </tr>
+        {{/each}}
+        
+      </tbody>
+    </table>
+
+    <div class="summary">
+      <p>Total Payout : {{ total_payout }}</p>
+    </div>
+
+  </div>
+</body>
+
+</html>
